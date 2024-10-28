@@ -21,7 +21,7 @@ class UserService
             }
 
             return $users;
-        } catch (UserGymListException $e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
             ], $e->getCode());
@@ -48,45 +48,11 @@ class UserService
         }
     }
 
-    /*
+   
     public function createUser(array $data)
     {
-        if (!isset($data['is_active'])) {
-            $data['is_active'] = 's'; 
-        }
-
-        $validator = Validator::make($data->all(), [
-            'name' => 'required|string',
-            'lastname' => 'required|string',
-            'cell' => 'required|integer',
-            'monthly_payment' => 'required|integer',
-            'is_active' => 'required|in:s,n'
-        ]);
-
-        if ($validator->fails()) {
-            throw new UserGymListException($validator->errors()->all(), 'Errores de validación', 400);
-        }
-
-        $user = User_Gym::create([
-            'name' => $data['name'],
-            'lastname' => $data['lastname'],
-            'cell' => $data['cell'],
-            'monthly_payment' => $data['monthly_payment'],
-            'is_active' => $data['is_active']
-        ]); 
-
-        if (!$user) {
-            throw new UserGymListException('Error al crear el usuario.', 500);
-        }
-
-        return $user;
-    }
-    */
-
-    public function createUser(array $data)
-    {
-        if (!isset($data['is_active'])) {
-            $data['is_active'] = 's'; 
+        if (!isset($data['isActive'])) {
+            $data['isActive'] = 's'; 
         }
 
         $validator = Validator::make($data, [
@@ -157,7 +123,7 @@ class UserService
             $user->lastname = $data['lastname'];
             $user->cell = $data['cell'];
             $user->monthlyPayment = $data['monthlyPayment'];
-            $user->isActive = $data['isactive'];
+            $user->isActive = $data['isActive'];
 
             $user->save();
 
@@ -187,7 +153,7 @@ class UserService
             ], 404);
             }
 
-            $user->is_active = 'n';
+            $user->isActive = 'n';
             $user->save();
 
             return response()->json([
