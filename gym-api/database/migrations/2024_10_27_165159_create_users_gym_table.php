@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            $table->int('cell');
-            $table->int('monthly_payment');
+            $table->integer('cell');
+            $table->integer('monthlyPayment');
             $table->timestamps();
-            $table->char('is_active', 1)->default('s');
+            $table->char('isActive', 1)->default('s');
         });
     }
 

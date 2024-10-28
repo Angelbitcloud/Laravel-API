@@ -12,8 +12,8 @@ class User_Gym extends Model
         'name', 
         'lastname', 
         'cell', 
-        'monthly_payment', 
-        'is_active'];
+        'monthlyPayment', 
+        'isActive'];
 
     protected $hidden = ['created_at', 'updated_at'];
 }

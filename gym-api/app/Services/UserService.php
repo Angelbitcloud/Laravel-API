@@ -21,7 +21,7 @@ class UserService
             }
 
             return $users;
-        } catch (\UserGymListException $e) {
+        } catch (UserGymListException $e) {
             return response()->json([
                 'error' => $e->getMessage()
             ], $e->getCode());
@@ -93,8 +93,8 @@ class UserService
             'name' => 'required|string',
             'lastname' => 'required|string',
             'cell' => 'required|integer',
-            'monthly_payment' => 'required|integer',
-            'is_active' => 'required|in:s,n'
+            'monthlyPayment' => 'required|integer',
+            'isActive' => 'required|in:s,n'
         ]);
 
         if ($validator->fails()) {
@@ -109,8 +109,8 @@ class UserService
                 'name' => $data['name'],
                 'lastname' => $data['lastname'],
                 'cell' => $data['cell'],
-                'monthly_payment' => $data['monthly_payment'],
-                'is_active' => $data['is_active']
+                'monthlyPayment' => $data['monthlyPayment'],
+                'isActive' => $data['isActive']
             ]); 
 
             if (!$user) {
@@ -142,8 +142,8 @@ class UserService
                 'name' => 'required|string',
                 'lastname' => 'required|string',
                 'cell' => 'required|integer',
-                'monthly_payment' => 'required|integer',
-                'is_active' => 'required|in:s,n'
+                'monthlyPayment' => 'required|integer',
+                'isActive' => 'required|in:s,n'
             ]);
     
             if ($validator->fails()) {
@@ -156,8 +156,8 @@ class UserService
             $user->name = $data['name'];
             $user->lastname = $data['lastname'];
             $user->cell = $data['cell'];
-            $user->monthly_payment = $data['monthly_payment'];
-            $user->is_active = $data['is_active'];
+            $user->monthlyPayment = $data['monthlyPayment'];
+            $user->isActive = $data['isactive'];
 
             $user->save();
 
