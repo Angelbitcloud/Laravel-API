@@ -3,22 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/users', function() {
-    return 'Conseguir todos los usuarios';
-});
+use App\Http\Controllers\Api\user_gymController;
 
-Route::get('users/{id}', function ($id) {
-    return 'conseguir un usuario por id';    
-});
+Route::get('/users', [user_gymController::class, 'listAll']);
 
-Route::post('users/{id}', function ($id) {
-    return 'crear un usuario';    
-});
+Route::get('users/{id}', [user_gymController::class, 'listUserByID']);
 
-Route::delete('users/{id}', function ($id) {
-    return 'eliminar un usuario';
-});
+Route::post('users', [user_gymController::class, 'createUser']);
 
-Route::put('users/{id}', function ($id) {
-    return 'actualizar un usuario';
-});
+Route::put('users/update/{id}', [user_gymController::class, 'updateUserByID']);
+
+Route::put('users/{id}', [user_gymController::class, 'deletedByID']);
